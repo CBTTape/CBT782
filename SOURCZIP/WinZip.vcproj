@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="_WinZip"
+	ProjectGUID="{3A089DF8-E622-4250-9F8C-573CD969DFDD}"
+	RootNamespace="WinZip"
+	>
+	<Platforms>
+		<Platform
+			Name="Win32"
+		/>
+	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
+	<Configurations>
+		<Configuration
+			Name="All|Win32"
+			OutputDirectory=".\Release"
+			IntermediateDirectory=".\Release"
+			ConfigurationType="10"
+			CharacterSet="0"
+			DeleteExtensionsOnClean="*.zip;*temp.WJF"
+			WholeProgramOptimization="1"
+			BuildLogFile="$(IntDir)\ZipBuildLog.htm"
+			>
+			<Tool
+				Name="VCPreBuildEventTool"
+			/>
+			<Tool
+				Name="VCCustomBuildTool"
+			/>
+			<Tool
+				Name="VCMIDLTool"
+			/>
+			<Tool
+				Name="VCPostBuildEventTool"
+				Description="Running zipjobs.cmd ..."
+				CommandLine="zipjobs.cmd &quot;$(SolutionDir)&quot;"
+			/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<File
+			RelativePath=".\src.WJF"
+			>
+		</File>
+		<File
+			RelativePath=".\winXXcpy.cmd"
+			>
+		</File>
+		<File
+			RelativePath=".\zipjobs.cmd"
+			>
+		</File>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

@@ -1,0 +1,4 @@
+makensis.exe  /V2  /D_DEBUG=0  /D_WIN64=0  /D_OUTFILE=AWSBrowse_1.5.2.1872_x86_std_setup.exe  /D_INSTALLER_TYPE=1  "/OAll\AWSBrowse.nsi.x86.std.log"  "AWSBrowse.nsi" 
+makensis.exe  /V2  /D_DEBUG=0  /D_WIN64=0  /D_OUTFILE=AWSBrowse_1.5.2.1872_x86_web_setup.exe  /D_INSTALLER_TYPE=4  "/OAll\AWSBrowse.nsi.x86.web.log"  "AWSBrowse.nsi" 
+makensis.exe  /V2  /D_DEBUG=0  /D_WIN64=1  /D_OUTFILE=AWSBrowse_1.5.2.1872_x64_std_setup.exe  /D_INSTALLER_TYPE=1  "/OAll\AWSBrowse.nsi.x64.std.log"  "AWSBrowse.nsi" 
+makensis.exe  /V2  /D_DEBUG=0  /D_WIN64=1  /D_OUTFILE=AWSBrowse_1.5.2.1872_x64_web_setup.exe  /D_INSTALLER_TYPE=4  "/OAll\AWSBrowse.nsi.x64.web.log"  "AWSBrowse.nsi" 

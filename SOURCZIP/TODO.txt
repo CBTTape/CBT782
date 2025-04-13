@@ -1,0 +1,26 @@
+------------------------------------------------------------------
+
+                    --    T O D O    --
+
+                   (ideas/possibilities)
+
+------------------------------------------------------------------
+
+    Flex-ES "FakeTape" support
+
+------------------------------------------------------------------
+
+    Export/Import to/from SCSI tape.
+
+------------------------------------------------------------------
+
+    Allow multiple selection of list-control items
+        for purpose of "exporting" corresponding data
+        into a separate named o/p file (i.e. "GUI-ized"
+        version of 'tapesplt' utility)
+
+------------------------------------------------------------------
+
+    Simple editing?
+
+------------------------------------------------------------------

@@ -1,0 +1,89 @@
+// Copyright (C) 2004-2008, Software Development Laboratories, "Fish" (David B. Trout)
+//////////////////////////////////////////////////////////////////////////////////////////
+//
+// AWSBROWSE.RC2 - resources Microsoft Visual C++ does not edit directly
+//
+//////////////////////////////////////////////////////////////////////////////////////////
+
+#ifdef APSTUDIO_INVOKED
+	#error this file is not editable by Microsoft Visual C++
+#endif //APSTUDIO_INVOKED
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// PROGRAMMING NOTE: the Visual Studio build options for this project are
+// defined such that the definition of the TARGETNAME and TARGETFILENAME
+// macros are manually passed to the resource compiler on the command-line.
+
+#if !defined(TARGETNAME) || !defined(TARGETFILENAME)
+#error TARGETNAME and/or TARGETFILENAME undefined. Check project Resources build settings.
+#endif
+
+//////////////////////////////////////////////////////////////////////////////////////////
+// Add manually edited resources here...
+//////////////////////////////////////////////////////////////////////////////////////////
+
+#define RC2
+#include "WinVer.h"		// std windows resource compiler #defines
+#include "Version.h"	// our version #defines
+#include "Product.h"	// our product #defines
+
+//////////////////////////////////////////////////////////////////////////////////////////
+//   IDR_MAINFRAME      variable-text CDocTemplate::GetDocString  string-table entry
+//////////////////////////////////////////////////////////////////////////////////////////
+
+STRINGTABLE 
+{
+    IDR_MAINFRAME   TARGETNAME "\nTape\nEmulated Tape File\nEmulated Tape File (*.aws,*.het)\n.aws;.het\nEmulated.Tape.File\nEmulated Tape File"
+}
+
+#ifndef _MAC
+//////////////////////////////////////////////////////////////////////////////////////////
+//   Version      (placed here for automatic version tracking purposes)
+//////////////////////////////////////////////////////////////////////////////////////////
+
+VS_VERSION_INFO  VERSIONINFO
+FILEFLAGSMASK    VS_FFI_FILEFLAGSMASK
+#ifdef _DEBUG
+FILEFLAGS        VS_FF_DEBUG
+#else
+FILEFLAGS        0
+#endif
+FILETYPE         VFT_APP
+FILESUBTYPE      VFT2_UNKNOWN
+FILEOS           VOS__WINDOWS32
+FILEVERSION      VERMAJOR_NUM,  VERINTER_NUM,  VERMINOR_NUM,  BUILDCOUNT_NUM
+PRODUCTVERSION   VERMAJOR_NUM,  VERINTER_NUM,  VERMINOR_NUM,  BUILDCOUNT_NUM
+{
+    //       0x0409 = "U.S. English",    0x04B0 (1200) = "Unicode"
+
+    BLOCK  "VarFileInfo"
+    {
+        VALUE "Translation", 0x409, 1200     // (English, Unicode)
+    }
+    BLOCK  "StringFileInfo"
+    {
+        BLOCK  "040904B0"                    // (English, Unicode)
+        {
+            // Standard/Required Attributes...
+
+            VALUE  "OriginalFilename",   TARGETFILENAME         "\0"
+            VALUE  "FileDescription",    PRODUCT                "\0"
+            VALUE  "Product Name",       PRODUCT                "\0"
+            VALUE  "FileVersion",        VERSION_STR            "\0"
+            VALUE  "ProductVersion",     VERSION_STR            "\0"
+            VALUE  "CompanyName",        COMPANY                "\0"
+            VALUE  "LegalCopyright",     COPYRIGHT " " COMPANY  "\0"
+
+#include "SpecialBuild.rc2"
+
+            // Custom Attributes...
+
+            VALUE  "Product URL",        PRODUCT_URL            "\0"
+            VALUE  "Product Email",      PRODUCT_EMAIL          "\0"
+        }
+    }
+}
+
+#endif    // !_MAC
+
+//////////////////////////////////////////////////////////////////////////////////////////

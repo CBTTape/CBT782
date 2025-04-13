@@ -1,0 +1,175 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0055)http://www.bustech.com/support/techtips/mas/awstape.htm -->
+<HTML><HEAD><TITLE>MAS Technical Note - Info about AWS Tapes</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=iso-8859-1">
+<META content="MSHTML 6.00.2900.3199" name=GENERATOR></HEAD>
+<BODY text=#000000 vLink=#ff0000 aLink=#ffff00 link=#ff0000 bgColor=#ffffff 
+leftMargin=0 background="Bus-Tech AWS Tape Format_files/Grid141.gif" topMargin=0 
+stylesrc="http://www.bustech.com/support/styles/GridStyle.htm"><A name=top>
+<TABLE cellSpacing=0 cellPadding=2 border=0>
+  <TBODY>
+  <TR>
+    <TD align=middle bgColor=#d8ffff><A href="http://www.bustech.com/" 
+      target=_top><FONT face=Arial color=#3333cc size=-2>Bus-Tech</FONT></A></TD>
+    <TD align=middle bgColor=#d8ffff><FONT face=Arial color=#000000 
+      size=-2>&gt;</FONT></TD>
+    <TD align=middle bgColor=#d8ffff><A href="http://www.bustech.com/support" 
+      target=_top><FONT face=Arial color=#3333cc size=-2>Support</FONT></A></TD>
+    <TD align=middle bgColor=#d8ffff><FONT face=Arial color=#000000 
+      size=-2>&gt;</FONT></TD>
+    <TD align=middle bgColor=#d8ffff><A 
+      href="http://www.bustech.com/support/mas.asp"><FONT face=Arial 
+      color=#3333cc size=-2>Mainframe Appliance for Storage</FONT></A></TD>
+    <TD align=middle bgColor=#d8ffff><FONT face=Arial color=#000000 
+      size=-2>&gt;</FONT></TD>
+    <TD align=middle bgColor=#d8ffff><A 
+      href="http://www.bustech.com/support/mastech.asp"><FONT face=Arial 
+      color=#3333cc size=-2>Technical Library</FONT></A></TD></TR></TBODY></TABLE>
+<TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD vAlign=top>
+      <TABLE cellSpacing=5 cellPadding=0 border=0>
+        <TBODY>
+        <TR>
+          <TD><FONT face=Arial color=#ff8000 
+            size=5><STRONG>Technical<BR>Note</STRONG></FONT></TD></TR></TBODY></TABLE>
+      <TABLE cellSpacing=0 cellPadding=10 width=141 border=0>
+        <TBODY>
+        <TR>
+          <TD><IMG alt="" 
+          src="Bus-Tech AWS Tape Format_files/MASlogo50.jpg"></TD></TR>
+        <TR>
+          <TD><FONT color=#000000>Mainframe Appliance for Storage 
+        </FONT></TD></TR></TBODY></TABLE></TD>
+    <TD vAlign=top width="100%">
+      <TABLE cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD width="100%"><BR>
+            <P>
+            <H2 align=center><B><FONT face=Arial color=black size=5>AWS Tape 
+            Information</FONT></B></H2>
+            <P></P>
+            <P><FONT face="Times New Roman">
+            <P>The Mainframe Appliance for Storage (MAS) stores virtual tape 
+            volumes on disk in the AWSTAPE format. The AWS format allows the MAS 
+            to maintain an exact representation of a physical tape, including 
+            variable block sizes, tapemarks, labels, etc.</P>
+            <HR>
+
+            <H2>AWSTAPE File Format</H2>
+            <P>Each AWSTAPE disk file emulates one single, physical tape 
+            volume.</P>
+            <P>Each emulated physical record (block) in the emulated tape volume 
+            is represented in the disk file by an AWS Block Header followed by 
+            data. An emulated tapemark is represented by a Block Header 
+only.</P>
+            <BLOCKQUOTE><IMG src="Bus-Tech AWS Tape Format_files/aws2.gif" 
+              clear="all" <br> </BLOCKQUOTE>
+            <P>The structure of the AWSTAPE block header is as follows. 
+            <B><I>Note that Bus-Tech has made several changes to the standard 
+            AWSTAPE format to support data compression and large 
+            blocks.</I></B></P><PRE><FONT face="Courier New" size=2><B>/*--------------------------------------------------------------------*/
+/* Structure definition for AWSTAPE block header                      */
+/*--------------------------------------------------------------------*/
+typedef struct _AWSTAPE_BLKHDR {
+        HWORD   curblkl;             /* Length of this block          */
+        HWORD   prvblkl;             /* Length of previous block      */
+        BYTE    flags1;              /* Flags byte 1                  */
+        BYTE    flags2;              /* Flags byte 2                  */
+    } AWSTAPE_BLKHDR;
+
+/* Definitions for flags1 */
+#define AWSTAPE_FLAG1_NEWREC    0x80 /* Start of a data record.       */
+#define AWSTAPE_FLAG1_TAPEMARK  0x40 /* Tape mark                     */
+#define AWSTAPE_FLAG1_ENDREC    0x20 /* End of a data record record.  */
+#define AWSTAPE_FLAG1_SEGMENTED 0x10 /* Segmented record. This bit is */
+                                     /* set on, in addition to NEWREC,*/
+                                     /* in the first segment of       */
+                                     /* segmented data blocks when the*/
+                                     /* MAS writes a large (&gt;65535    */
+                                     /* bytes) block. When the MAS    */
+                                     /* reads blocks that span        */
+                                     /* multiple AWS segments, the    */
+                                     /* SEGMENTED bit is optional.    */
+                                     /* This is a Bus-Tech extension  */
+                                     /* to the standard aws format.   */
+
+
+/* Definitions for flags2 */         
+#define AWSTAPE_FLAG2_COMPR    0x80  /* Data compressed with zlib     */ 
+                                     /* version 1.1.14. In this case, */
+                                     /* curblkl contains the post-    */
+                                     /* compression size; the original*/
+                                     /* blocksize can only be         */
+                                     /* determined by decompressing.  */
+                                     /* This is a Bus-Tech extension  */
+                                     /* to the standard aws format.   */
+#define AWSTAPE_FLAG2_HWCMPRS   0x40 /* Data compressed with Bus-Tech */
+                                     /* hardware compression.         */
+                                     /* This is a Bus-Tech extension  */
+                                     /* to the standard aws format.   */
+#define AWSTAPE_FLAG2_ENCRYPTED 0x20 /* Encrypted block               */
+                                     /* This is a Bus-Tech extension  */
+                                     /* to the standard aws format.   */
+/*--------------------------------------------------------------------*/
+</B></FONT></PRE>
+            <P>An HWORD is a two-byte (16 bit) unsigned value. Values in an 
+            HWORD are in Intel "little-endian" (low-byte, hi-byte) format.</P>
+            <P>A BYTE is an unsigned one-byte (8 bit) value.</P>
+            <P>The block length (current and previous) defines the length of the 
+            AWS block itself, not necessarily the length of the original tape 
+            block (in cases where a tape block spans multiple AWS blocks, or 
+            when the data has been compressed). The length field does not 
+            include the length of the AWS block header itself, just the data 
+            block. The maximum amount of data that can be stored in a single AWS 
+            data block hex FFFF (65535 decimal) bytes.</P>
+            <P>The first block header in an AWSTAPE file has a previous block 
+            length (prvblkl) of zero.</P>
+            <P>A tapemark has a current block length (curblkl) of zero, and 
+            AWSTAPE_FLAG1_TAPEMARK flag set in flags1. NEWREC and ENDREC are 
+            both off in all tapemark block headers.</P>
+            <P>The NEWREC bit in flags1 signifies the start of a tape data 
+            block. The ENDREC bit in flags1 signifies the end of a tape data 
+            block. If a tape data blocks fits into a single AWS block, both 
+            NEWREC and ENDREC will be set.</P>
+            <P>A tape block can span multiple AWS blocks. Typically, this would 
+            be done to store a tape block that was larger then 65535 bytes. In 
+            this case, NEWREC will be set in the first AWS block of the chain, 
+            and ENDREC will be set in the last. If a tape data block spans more 
+            than two AWS blocks, the AWS blocks inbetween the first and last 
+            will have neither NEWREC nor ENDREC set.</P>
+            <P>Undefined bits in flags1 and flags2 should all be off. These bits 
+            are reserved for future expansion, and may cause unpredictable 
+            results if used.</P>
+            <P>No special record, block header or flag signifies the end of the 
+            AWS virtual tape volume; the end of the disk file simply signifies 
+            the end of the tape volume. Typically, the last data in the file 
+            will be a block header for a tapemark, but that is not a 
+            requirement; the file could end with the end of a data record.</P>
+            <P>Data in an AWSTAPE data record is stored unchanged from how the 
+            mainframe sent it. Normally, mainframe data is in EBCDIC format. But 
+            if the mainframe application writes the data in ASCII, then the 
+            AWSTAPE data record will contain ASCII data.</P>
+            <HR>
+
+            <H2>More Information</H2>
+            <P>You can find more information, utilities, and links about AWS 
+            tapes <A href="http://www.cbttape.org/awstape.htm" target=_top>at 
+            this location.</A> (Note: This link is provided as a convenience. It 
+            takes you outside of the Bus-Tech support web; Bus-Tech is not 
+            responsible for any information that you may find at this 
+            location.)</P><BR><BR>
+            <DIV align=center>
+            <HR align=center width="100%" SIZE=2>
+            </DIV>
+            <P align=right><FONT color=#808080 size=1>
+            <SCRIPT language=xavaScript>
+           <!--
+            document.write("Last updated :");
+            document.write(document.lastModified);
+           // -->
+        </SCRIPT>
+            <BR>Copyright © 2002-2004 by Bus-Tech, 
+        Inc.</FONT></P><BR></FONT></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></A></BODY></HTML>

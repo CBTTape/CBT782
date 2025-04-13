@@ -1,0 +1,599 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+// PROGRAMMING NOTE: the Visual Studio build options for this project are
+// defined such that the definition of the TARGETNAME and TARGETFILENAME
+// macros are manually passed to the resource compiler on the command-line,
+// but since the "ApStudio" integrated component's integrated resource
+// compiler doesn't use Visual Studio's project build system it thus does
+// not get passed the value and thus complains about it being undefined
+// unless we manually do so for ourselves here. -- Fish
+
+#ifdef APSTUDIO_INVOKED
+#if !defined(TARGETNAME) || !defined(TARGETFILENAME)
+#define TARGETNAME     "AWSBrowse"
+#define TARGETFILENAME "AWSBrowse.exe"
+#endif
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\r\n"
+    "// PROGRAMMING NOTE: the Visual Studio build options for this project are\r\n"
+    "// defined such that the definition of the TARGETNAME and TARGETFILENAME\r\n"
+    "// macros are manually passed to the resource compiler on the command-line,\r\n"
+    "// but since the ""ApStudio"" integrated component's integrated resource\r\n"
+    "// compiler doesn't use Visual Studio's project build system it thus does\r\n"
+    "// not get passed the value and thus complains about it being undefined\r\n"
+    "// unless we manually do so for ourselves here. -- Fish\r\n"
+    "\r\n"
+    "#ifdef APSTUDIO_INVOKED\r\n"
+    "#if !defined(TARGETNAME) || !defined(TARGETFILENAME)\r\n"
+    "#define TARGETNAME     ""AWSBrowse""\r\n"
+    "#define TARGETFILENAME ""AWSBrowse.exe""\r\n"
+    "#endif\r\n"
+    "#endif\r\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "#define _AFX_NO_SPLITTER_RESOURCES\r\n"
+    "#define _AFX_NO_OLE_RESOURCES\r\n"
+    "#define _AFX_NO_TRACKER_RESOURCES\r\n"
+    "#define _AFX_NO_PROPERTY_RESOURCES\r\n"
+    "\r\n"
+    "#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)\r\n"
+    "#ifdef _WIN32\r\n"
+    "LANGUAGE 9, 1\r\n"
+    "#pragma code_page(1252)\r\n"
+    "#endif //_WIN32\r\n"
+    "#include ""res\\AWSBrowse.rc2""  // non-Microsoft Visual C++ edited resources\r\n"
+    "#include ""afxres.rc""         // Standard components\r\n"
+    "#endif\r\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDR_MAINFRAME           ICON                    "res\\AWSBrowsePgm.ico"
+IDI_ICONS1              ICON                    "res\\icons1.ico"
+IDI_ICONS2              ICON                    "res\\icons2.ico"
+IDI_ICONS3              ICON                    "res\\icons3.ico"
+IDI_ICONS4              ICON                    "res\\icons4.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDR_MAINFRAME           BITMAP                  "res\\Toolbar.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Toolbar
+//
+
+IDR_MAINFRAME TOOLBAR  16, 15
+BEGIN
+    BUTTON      ID_FILE_OPEN
+    SEPARATOR
+    BUTTON      ID_EDIT_COPY
+    SEPARATOR
+    BUTTON      ID_FILE_PAGE_SETUP
+    BUTTON      ID_FILE_PRINT_PREVIEW
+    BUTTON      ID_FILE_PRINT
+    SEPARATOR
+    BUTTON      ID_VIEW_STATISTICS
+    SEPARATOR
+    BUTTON      ID_EDIT_FIND
+    BUTTON      ID_EDIT_FINDPREVIOUS
+    BUTTON      ID_EDIT_FINDNEXT
+    SEPARATOR
+    BUTTON      ID_EDIT_PREVIOUSFILE
+    BUTTON      ID_EDIT_PREVIOUSBLOCK
+    BUTTON      ID_EDIT_GOTO
+    BUTTON      ID_EDIT_NEXTBLOCK
+    BUTTON      ID_EDIT_NEXTFILE
+    SEPARATOR
+    BUTTON      ID_VIEW_BOTH
+    BUTTON      ID_VIEW_TEXTONLY
+    SEPARATOR
+    BUTTON      ID_VIEW_ASCII
+    BUTTON      ID_VIEW_EBCDIC
+    SEPARATOR
+    BUTTON      ID_VIEW_SETTINGS
+    SEPARATOR
+    BUTTON      ID_APP_ABOUT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+IDR_MAINFRAME MENU 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN
+        MENUITEM "&Close\tCtrl+F4",             ID_FILE_MYCLOSE
+        MENUITEM SEPARATOR
+        MENUITEM "Recent File",                 ID_FILE_MRU_FILE1
+        MENUITEM SEPARATOR
+        MENUITEM "Page Setup...",               ID_FILE_PAGE_SETUP
+        MENUITEM "Print Preview...",            ID_FILE_PRINT_PREVIEW
+        MENUITEM "Print Block...",              ID_FILE_PRINT
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_APP_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Copy\tCtrl+C",               ID_EDIT_COPY
+        MENUITEM SEPARATOR
+        MENUITEM "&Hex Area\tShift+Tab",        ID_EDIT_HEXAREA
+        MENUITEM "&Text Area\tTab",             ID_EDIT_TEXTAREA
+        MENUITEM SEPARATOR
+        MENUITEM "&Find...\tCtrl+F",            ID_EDIT_FIND
+        MENUITEM "Find &Next\tF3",              ID_EDIT_FINDNEXT
+        MENUITEM "Find &Previous\tShift+F3",    ID_EDIT_FINDPREVIOUS
+        MENUITEM SEPARATOR
+        MENUITEM "Previous File\tShift+F7",     ID_EDIT_PREVIOUSFILE
+        MENUITEM "Previous Block\tF7",          ID_EDIT_PREVIOUSBLOCK
+        MENUITEM "Next Block\tF8",              ID_EDIT_NEXTBLOCK
+        MENUITEM "Next File\tShift+F8",         ID_EDIT_NEXTFILE
+        MENUITEM SEPARATOR
+        MENUITEM "Go To...\tCtrl+G",            ID_EDIT_GOTO
+    END
+    POPUP "&View"
+    BEGIN
+        MENUITEM "&Toolbar",                    ID_VIEW_TOOLBAR
+        MENUITEM "&Status Bar",                 ID_VIEW_STATUS_BAR
+        MENUITEM SEPARATOR
+        MENUITEM "Show Hex",                    ID_VIEW_HEX
+        MENUITEM SEPARATOR
+        MENUITEM "&ASCII text\tCtrl+A",         ID_VIEW_ASCII
+        MENUITEM "&EBCDIC text\tCtrl+E",        ID_VIEW_EBCDIC
+        MENUITEM SEPARATOR
+        MENUITEM "Next Pane\tF6",               ID_NEXT_PANE
+        MENUITEM "Previous Pane\tShift+F6",     ID_PREV_PANE
+        MENUITEM SEPARATOR
+        MENUITEM "Tape Summary...",             ID_VIEW_STATISTICS
+        MENUITEM SEPARATOR
+        MENUITEM "Display Font...",             ID_VIEW_DISPLAYFONT
+        MENUITEM "Printer Font...",             ID_VIEW_PRINTERFONT
+        MENUITEM SEPARATOR
+        MENUITEM "Display Format...",           ID_VIEW_SETTINGS
+    END
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "DLL Version Information...",  ID_HELP_DLLVERSIONINFORMATION
+        MENUITEM "&About AWSBrowse...",         ID_APP_ABOUT
+    END
+END
+
+IDR_LVRCLICK_MENU MENU 
+BEGIN
+    POPUP "(listview right-click context menu)"
+    BEGIN
+        MENUITEM "&Details...",                 ID_LVRCLICK_INFO
+    END
+END
+
+IDR_DUMMYCMDS_MENU MENU 
+BEGIN
+    POPUP "(dummy commands menu)"
+    BEGIN
+        MENUITEM "(view both hex and text)",    ID_VIEW_BOTH
+        MENUITEM "(view only text)",            ID_VIEW_TEXTONLY
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Accelerator
+//
+
+IDR_MAINFRAME ACCELERATORS 
+BEGIN
+    "C",            ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    VK_INSERT,      ID_EDIT_COPY,           VIRTKEY, CONTROL, NOINVERT
+    "F",            ID_EDIT_FIND,           VIRTKEY, CONTROL, NOINVERT
+    VK_F3,          ID_EDIT_FINDNEXT,       VIRTKEY, NOINVERT
+    VK_F3,          ID_EDIT_FINDPREVIOUS,   VIRTKEY, SHIFT, NOINVERT
+    "G",            ID_EDIT_GOTO,           VIRTKEY, CONTROL, NOINVERT
+    VK_F8,          ID_EDIT_NEXTBLOCK,      VIRTKEY, NOINVERT
+    VK_F8,          ID_EDIT_NEXTFILE,       VIRTKEY, SHIFT, NOINVERT
+    VK_F7,          ID_EDIT_PREVIOUSBLOCK,  VIRTKEY, NOINVERT
+    VK_F7,          ID_EDIT_PREVIOUSFILE,   VIRTKEY, SHIFT, NOINVERT
+    "O",            ID_FILE_OPEN,           VIRTKEY, CONTROL, NOINVERT
+    VK_F6,          ID_NEXT_PANE,           VIRTKEY, NOINVERT
+    VK_F6,          ID_PREV_PANE,           VIRTKEY, SHIFT, NOINVERT
+    VK_F4,          ID_FILE_MYCLOSE,        VIRTKEY, CONTROL, NOINVERT
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOG  0, 0, 269, 65
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About AWSBrowse"
+FONT 8, "MS Sans Serif"
+BEGIN
+    GROUPBOX        "",IDC_STATIC,7,4,255,52
+    ICON            IDR_MAINFRAME,IDC_STATIC,17,16,21,20
+    LTEXT           "Fish's AWS File Browser Utility",IDC_PRODUCT_VERSION_STATIC,53,16,197,8
+    LTEXT           "Copyright (C) 2004-2008 Software Development Laboratories",IDC_COPYRIGHT_COMPANY_STATIC,53,27,197,8
+    LTEXT           "Support contact:",IDC_STATIC,53,38,54,8
+    LTEXT           "fish@softdevlabs.com",IDC_CONTACT_EMAIL_STATIC,111,38,78,8
+END
+
+IDD_PROGRESS DIALOG  0, 0, 461, 57
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Cancel",IDCANCEL,205,36,50,14
+    CONTROL         "Progress1",IDC_PROGDLG_PROGRESS,"msctls_progress32",WS_BORDER,15,18,439,10
+    LTEXT           " 0 %",IDC_PROGDLG_PERCENT,221,7,18,8
+END
+
+IDD_MY_FIND_DIALOG DIALOGEX  0, 0, 273, 87
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Find"
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "Fi&nd what:",IDC_STATIC,7,9,34,8
+    CONTROL         "",IDC_FINDWHAT_COMBOBOX,"ComboBoxEx32",CBS_DROPDOWN | CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP,49,7,158,114
+    GROUPBOX        "How",IDC_STATIC,8,26,90,54
+    CONTROL         "Match whole &word",IDC_WHOLEWORD_CHECKBOX,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,39,74,10
+    CONTROL         "Match &case",IDC_MATCHCASE_CHECKBOX,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,51,53,10
+    CONTROL         "He&x search",IDC_HEX_CHECKBOX,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,17,63,52,10
+    GROUPBOX        "Where",IDC_STATIC,105,26,48,54,WS_GROUP
+    CONTROL         "&Block",IDC_WHERE_RADIO_BUTTON_GROUP,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,111,39,34,10
+    CONTROL         "&File",IDC_FILE_RADIO_BUTTON,"Button",BS_AUTORADIOBUTTON,111,51,27,10
+    CONTROL         "&Tape",IDC_TAPE_RADIO_BUTTON,"Button",BS_AUTORADIOBUTTON,111,63,33,10
+    GROUPBOX        "Direction",IDC_STATIC,160,26,48,54,WS_GROUP
+    CONTROL         "&Up",IDC_UPDOWN_RADIO_BUTTON_GROUP,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,167,39,25,10
+    CONTROL         "&Down",IDC_DOWN_RADIO_BUTTON,"Button",BS_AUTORADIOBUTTON,167,51,35,10
+    DEFPUSHBUTTON   "&Find Next",IDOK,216,7,50,14,WS_DISABLED | WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,216,25,50,14
+END
+
+IDD_SETTINGS_DIALOG DIALOGEX 0, 0, 177, 150
+STYLE DS_SETFONT | DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Display Format"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    GROUPBOX        " Hex Area Layout ",IDC_STATIC,7,5,163,55,WS_GROUP
+    LTEXT           "Bytes per group:",IDC_STATIC,19,22,52,8
+    EDITTEXT        IDC_BPG_EDIT,76,20,19,12,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Spin1",IDC_BPG_SPINNER,"msctls_updown32",UDS_SETBUDDYINT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,97,20,10,12
+    LTEXT           "Bytes per line:",IDC_STATIC,19,38,45,8
+    EDITTEXT        IDC_BPR_EDIT,76,36,19,12,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Spin1",IDC_BPR_SPINNER,"msctls_updown32",UDS_SETBUDDYINT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,97,36,10,12
+    CONTROL         " (dynamic)",IDC_DYN_CHECKBOX,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,116,38,48,10
+    GROUPBOX        " Text Area Layout ",IDC_STATIC,7,66,163,55,WS_GROUP
+    LTEXT           "Record length:",IDC_STATIC,19,83,48,8
+    EDITTEXT        IDC_TEXT_RECLEN_EDIT,76,81,19,12,ES_AUTOHSCROLL | ES_NUMBER
+    CONTROL         "Spin1",IDC_RECLEN_SPINNER,"msctls_updown32",UDS_SETBUDDYINT | UDS_AUTOBUDDY | UDS_ARROWKEYS | UDS_NOTHOUSANDS,97,81,11,12
+    LTEXT           "Display format:",IDC_STATIC,19,100,47,8
+    CONTROL         "ASCII",IDC_FORMAT_RADIOBUTTON_GROUP,"Button",BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,76,100,34,10
+    CONTROL         "EBCDIC",IDC_EBCDIC_RADIOBUTTON,"Button",BS_AUTORADIOBUTTON,115,100,42,10
+    DEFPUSHBUTTON   "OK",IDOK,63,129,50,14,WS_GROUP
+    PUSHBUTTON      "Cancel",IDCANCEL,120,129,50,14
+END
+
+IDD_BLOCKINFO_DIALOG DIALOGEX 0, 0, 336, 145
+STYLE DS_SETFONT | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+CAPTION "Block Details"
+FONT 8, "MS Sans Serif", 0, 0, 0x0
+BEGIN
+    EDITTEXT        IDC_DETAILS_EDIT,7,7,322,110,ES_MULTILINE | ES_AUTOVSCROLL | ES_AUTOHSCROLL | ES_READONLY | WS_VSCROLL | WS_HSCROLL
+    DEFPUSHBUTTON   "OK",IDOK,142,124,50,14
+END
+
+IDD_GOTO_DIALOG DIALOGEX 0, 0, 205, 76
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Go To..."
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    GROUPBOX        "Standard Labeled File:",IDC_STATIC,7,7,191,40
+    COMBOBOX        IDC_FILENAMES_COMBOBOX,19,22,167,154,CBS_DROPDOWNLIST | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,78,55,50,14
+    PUSHBUTTON      "Cancel",IDCANCEL,136,55,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO 
+BEGIN
+    IDD_ABOUTBOX, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 262
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 58
+    END
+
+    IDD_PROGRESS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 454
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 50
+    END
+
+    IDD_MY_FIND_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 266
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 80
+    END
+
+    IDD_SETTINGS_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 170
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 143
+    END
+
+    IDD_BLOCKINFO_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 329
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 138
+    END
+
+    IDD_GOTO_DIALOG, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 198
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 69
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_APP_TITLE       "AWSBrowse"
+    AFX_IDS_IDLEMESSAGE     "Ready"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_INDICATOR_EXT        "EXT"
+    ID_INDICATOR_CAPS       "CAP"
+    ID_INDICATOR_NUM        "NUM"
+    ID_INDICATOR_SCRL       "SCRL"
+    ID_INDICATOR_OVR        "OVR"
+    ID_INDICATOR_REC        "REC"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_NEW             "Create a new document\nNew"
+    ID_FILE_OPEN            "Open an existing document\nOpen"
+    ID_FILE_CLOSE           "Close the active document\nClose"
+    ID_FILE_SAVE            "Save the active document\nSave"
+    ID_FILE_SAVE_AS         "Save the active document with a new name\nSave As"
+    ID_FILE_PAGE_SETUP      "Page Setup...\nPage Setup"
+    ID_FILE_PRINT_SETUP     "Print Setup...\nPrint Setup..."
+    ID_FILE_PRINT           "Prints all or part of the current block\nPrint Block"
+    ID_FILE_PRINT_PREVIEW   "Print Preview...\nPrint Preview"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_APP_ABOUT            "Display program information, version number and copyright\nAbout"
+    ID_APP_EXIT             "Quit the application; prompts to save documents\nExit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_FILE_MRU_FILE1       "Open this document"
+    ID_FILE_MRU_FILE2       "Open this document"
+    ID_FILE_MRU_FILE3       "Open this document"
+    ID_FILE_MRU_FILE4       "Open this document"
+    ID_FILE_MRU_FILE5       "Open this document"
+    ID_FILE_MRU_FILE6       "Open this document"
+    ID_FILE_MRU_FILE7       "Open this document"
+    ID_FILE_MRU_FILE8       "Open this document"
+    ID_FILE_MRU_FILE9       "Open this document"
+    ID_FILE_MRU_FILE10      "Open this document"
+    ID_FILE_MRU_FILE11      "Open this document"
+    ID_FILE_MRU_FILE12      "Open this document"
+    ID_FILE_MRU_FILE13      "Open this document"
+    ID_FILE_MRU_FILE14      "Open this document"
+    ID_FILE_MRU_FILE15      "Open this document"
+    ID_FILE_MRU_FILE16      "Open this document"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_NEXT_PANE            "Switch to the next window pane\nNext Pane"
+    ID_PREV_PANE            "Switch back to the previous window pane\nPrevious Pane"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_WINDOW_SPLIT         "Split the active window into panes\nSplit"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_CLEAR           "Erase the selection\nErase"
+    ID_EDIT_CLEAR_ALL       "Erase everything\nErase All"
+    ID_EDIT_COPY            "Copy the selection and put it on the Clipboard\nCopy"
+    ID_EDIT_CUT             "Cut the selection and put it on the Clipboard\nCut"
+    ID_EDIT_FIND            "Find the specified text\nFind"
+    ID_EDIT_PASTE           "Insert Clipboard contents\nPaste"
+    ID_EDIT_REPEAT          "Repeat the last action\nRepeat"
+    ID_EDIT_REPLACE         "Replace specific text with different text\nReplace"
+    ID_EDIT_SELECT_ALL      "Select the entire document\nSelect All"
+    ID_EDIT_UNDO            "Undo the last action\nUndo"
+    ID_EDIT_REDO            "Redo the previously undone action\nRedo"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_TOOLBAR         "Show or hide the toolbar\nToggle ToolBar"
+    ID_VIEW_STATUS_BAR      "Show or hide the status bar\nToggle StatusBar"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCSIZE          "Change the window size"
+    AFX_IDS_SCMOVE          "Change the window position"
+    AFX_IDS_SCMINIMIZE      "Reduce the window to an icon"
+    AFX_IDS_SCMAXIMIZE      "Enlarge the window to full size"
+    AFX_IDS_SCNEXTWINDOW    "Switch to the next document window"
+    AFX_IDS_SCPREVWINDOW    "Switch to the previous document window"
+    AFX_IDS_SCCLOSE         "Close the active window and prompts to save the documents"
+END
+
+STRINGTABLE 
+BEGIN
+    AFX_IDS_SCRESTORE       "Restore the window to normal size"
+    AFX_IDS_SCTASKLIST      "Activate Task List"
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_PROGRESS_CAPTION    "Reading..."
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_EBCDICMODE      "EBCDIC\nEBCDIC"
+    ID_EDIT_ASCIIMODE       "ASCII\nASCII"
+    ID_VIEW_ASCIIMODE       "ASCII\nASCII"
+    ID_VIEW_ASCII           "ASCII text mode\nASCII text"
+    ID_VIEW_EBCDIC          "EBCDIC text mode\nEBCDIC text"
+    ID_EDIT_FINDNEXT        "Find the next occurence of the specified text\nFind Next"
+    ID_EDIT_FINDPREVIOUS    "Find the previous occurence of the specified text\nFind Previous"
+    ID_EDIT_HEXAREA         "Move the cursor to the hex area\nHex area"
+    ID_EDIT_TEXTAREA        "Move the cursor to the text area\nText area"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_EDIT_NEXTBLOCK       "Forward Space Record\nForward Space Block"
+    ID_EDIT_PREVIOUSBLOCK   "Backspace Record\nBackspace Block"
+    ID_EDIT_NEXTFILE        "Forward Space File\nForward Space File"
+    ID_EDIT_PREVIOUSFILE    "Backspace File\nBackspace File"
+    ID_HELP_DLLVERSIONINFORMATION 
+                            "Display ZLIB / BZIP2 dll version information...\nDLL Version Info"
+    ID_REGULAREXPRESSIONS_ANYCHARACTER "Any character\nAny character"
+END
+
+STRINGTABLE 
+BEGIN
+    ID_VIEW_SETTINGS        "Modify Display Format...\nDisplay Format"
+    ID_VIEW_DISPLAYFONT     "Choose Display Font\nDisplay Font"
+    ID_VIEW_PRINTFONT       "Choose Printer Font\nPrinter Font"
+    ID_VIEW_DISPLAYFORMAT   "Modify Display Format...\nDisplay Format"
+    ID_VIEW_PRINTERFONT     "Choose Printer Font\nPrinter Font"
+    ID_LVRCLICK_FOO         "Display additional block information...\nAddt'l info..."
+END
+
+STRINGTABLE 
+BEGIN
+    ID_LVRCLICK_INFO        "Display additional block information...\nBlock Info..."
+    ID_VIEW_ONLYTEXTNOHEX   "Display only the text\nText only"
+    ID_VIEW_SHOWHEXDATA     "Show hex data\nShow hex"
+    ID_VIEW_SHOWHEX         "Show hex\nShow hex"
+    ID_VIEW_TOGGLEHEX       "Toggle hex display\nToggle hex"
+    ID_VIEW_HEX             "Show hex data\nShow hex"
+    ID_VIEW_TEXT            "Show ONLY text data\nText only"
+    ID_VIEW_TEXTONLY        "View data in text format only\nDisplay text only"
+    ID_VIEW_BOTH            "View data in both hex and text formats\nDisplay hex and text"
+    ID_FILE_MYCLOSE         "Close the open document...\nClose"
+    ID_VIEW_STATISTICS      "View Tape Summary report\nTape Summary"
+    ID_EDIT_GOTO            "Go directly to first block of Standard Labeled file\nGo to"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#define _AFX_NO_SPLITTER_RESOURCES
+#define _AFX_NO_OLE_RESOURCES
+#define _AFX_NO_TRACKER_RESOURCES
+#define _AFX_NO_PROPERTY_RESOURCES
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE 9, 1
+#pragma code_page(1252)
+#endif //_WIN32
+#include "res\AWSBrowse.rc2"  // non-Microsoft Visual C++ edited resources
+#include "afxres.rc"         // Standard components
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

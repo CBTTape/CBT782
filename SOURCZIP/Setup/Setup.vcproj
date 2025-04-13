@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="8.00"
+	Name="Setup"
+	ProjectGUID="{634F08B6-C791-4ADE-81D1-61026AA17A43}"
+	RootNamespace="Setup"
+	Keyword="MakeFileProj"
+	>
+	<Platforms>
+		<Platform
+			Name="Win32"
+		/>
+	</Platforms>
+	<ToolFiles>
+	</ToolFiles>
+	<Configurations>
+		<Configuration
+			Name="All|Win32"
+			OutputDirectory="$(ConfigurationName)"
+			IntermediateDirectory="$(ConfigurationName)"
+			ConfigurationType="0"
+			>
+			<Tool
+				Name="VCNMakeTool"
+				BuildCommandLine="makesetup.cmd  &quot;AWSBrowse&quot;  &quot;AWSBrowse.nsi&quot;  &quot;AWSBrowse32.exe&quot;  &quot;$(SolutionDir)dist&quot;  &quot;$(OutDir)&quot;"
+				ReBuildCommandLine="makesetup.cmd  &quot;AWSBrowse&quot;  &quot;AWSBrowse.nsi&quot;  &quot;AWSBrowse32.exe&quot;  &quot;$(SolutionDir)dist&quot;  &quot;$(OutDir)&quot;"
+				CleanCommandLine="clean.cmd  &quot;$(SolutionDir)dist&quot;  &quot;$(OutDir)&quot;"
+				Output=""
+				PreprocessorDefinitions="WIN32;NDEBUG"
+				IncludeSearchPath=""
+				ForcedIncludes=""
+				AssemblySearchPath=""
+				ForcedUsingAssemblies=""
+				CompileAsManaged=""
+			/>
+		</Configuration>
+	</Configurations>
+	<References>
+	</References>
+	<Files>
+		<File
+			RelativePath=".\AWSBrowse.nsi"
+			>
+		</File>
+		<File
+			RelativePath=".\ChooseMirrorPage.ini"
+			>
+		</File>
+		<File
+			RelativePath=".\clean.cmd"
+			>
+		</File>
+		<File
+			RelativePath=".\makesetup.cmd"
+			>
+		</File>
+		<File
+			RelativePath=".\Product.nsh"
+			>
+		</File>
+		<File
+			RelativePath=".\UnRemoveRegEntriesPage.ini"
+			>
+		</File>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

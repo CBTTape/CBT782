@@ -1,0 +1,8 @@
+VCBUILD /%VCBUILDTYPE% "AWSBrowse.vcproj" "Debug|Win32"    /time /nologo
+VCBUILD /%VCBUILDTYPE% "AWSBrowse.vcproj" "UDebug|Win32"   /time /nologo
+VCBUILD /%VCBUILDTYPE% "AWSBrowse.vcproj" "Release|Win32"  /time /nologo
+VCBUILD /%VCBUILDTYPE% "AWSBrowse.vcproj" "URelease|Win32" /time /nologo
+VCBUILD /%VCBUILDTYPE% "AWSBrowse.vcproj" "Debug|x64"      /time /nologo
+VCBUILD /%VCBUILDTYPE% "AWSBrowse.vcproj" "UDebug|x64"     /time /nologo
+VCBUILD /%VCBUILDTYPE% "AWSBrowse.vcproj" "Release|x64"    /time /nologo
+VCBUILD /%VCBUILDTYPE% "AWSBrowse.vcproj" "URelease|x64"   /time /nologo

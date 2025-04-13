@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0078)http://support.funsoft.com/flexman/fsims100-faketape4-fsi-007-000-009-002.html -->
+<!-- Copyright 1992-2001 by Fundamental Software, Inc. --><HTML><HEAD><TITLE>The FakeTape Format</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2900.3199" name=GENERATOR></HEAD>
+<BODY>
+<H1>4. - The FakeTape Format</H1>
+<H2><A name=4.1.>4.1. - Notice</H2>
+<P>The information provided below on the internal structure of the FakeTape 
+format is provided for reference and to enable users to access FakeTape files in 
+environments where the FakeTape Library cannot be used. However, users should be 
+aware that the internal structure of the FakeTape format may change in the 
+future. Since all reasonable efforts will be made to ensure the compatibility 
+over time of access through the FakeTape Library, users should avoid direct 
+manipulation of FakeTape files whenever possible. If it is not possible to use 
+the FakeTape Library to manipulate FakeTape files, users should employ good 
+structured programming practice and isolate all FakeTape manipulation procedures 
+in libraries of their own construction.</P>
+<H2><A name=4.2.>4.2. - Review: Physical Tape Format</H2>
+<P>A physical 9-track tape consists of tape blocks separated by "Inter-Block 
+Gaps" ("IBGs") of erased tape. Tape blocks may be of fixed or variable 
+length.</P>
+<P>The contents of a tape block are typically interpreted by the operating 
+system's access methods as consisting of one or more "records." This division of 
+tape blocks into "records" is not explicitly encoded in the tape itself.</P>
+<P>A special type of block is used as a "tape mark." This tape mark may be used 
+to delineate files. The contents of a tape mark are not available to a user.</P>
+<H2><A name=4.3.>4.3. - FakeTapes are Sequential Byte Streams</H2>
+<P>The purpose of the FakeTape format is to allow the representation of variable 
+block length tapes as sequential byte streams so that they may be carried upon 
+media which could not otherwise accommodate them.</P>
+<P>The medium for a FakeTape is simply a sequence of bytes which has no internal 
+structure other than its sequentiality. This medium might be, for example, a 
+server OS disk file, a disk file on many other operating systems, a file on a 
+DAT (DDS) tape, a stream of bytes passing over a communications line, and so 
+forth. <BR>
+<BLOCKQUOTE>The FLEX-ES FakeTape Library is presently limited to operations on 
+  server OS disk files under supported server operating systems. However, the 
+  FakeTape format itself is not limited in this way.</BLOCKQUOTE>
+<P></P>
+<P>As the medium upon which a FakeTape is carried is just a sequence of bytes, 
+the medium imposes no assumptions about character encoding (EBCDIC or ASCII). 
+Interpretations of character encoding are made by the programs which read and 
+write FakeTapes. In normal operation, the data on a FakeTape frequently will be 
+interpretable as EBCDIC, but some of the formatting information used to lay out 
+the structure of the FakeTape will be most easily interpreted as ASCII.</P>
+<P>If you are unfamiliar with programming operations on server OS files, you 
+should familiarize yourself with them by reading any good introduction to server 
+OS programming (in the programming language of your choice).</P>
+<P>Note that server OS file operations which use fixed size blocks may be 
+significantly faster than simple character-based file operations.</P>
+<H2><A name=4.4.>4.4. - Tape Blocks and Inter-Block Gaps</H2>
+<P>It is not necessary for the FakeTape format to define the representation of 
+individual "records" within a tape block. The division of a tape block into one 
+or more individual records is done by the mainframe operating system access 
+methods which do tape I/O. This is precisely analogous to a physical tape, where 
+nothing on the physical tape itself delineates the divisions between individual 
+"records" within a tape block.</P>
+<P>The FakeTape format must, however, represent the Inter-Block Gaps (IBGs) 
+between tape blocks. Since a sequential stream of bytes does not contain the 
+concept of an IBG, FakeTape emulates IBGs using control information embedded in 
+the byte stream.</P>
+<P>The FSI FakeTape Inter-Block Gap encoding consists of three fields.</P>
+<P>The first two of these fields hold the lengths of the previous and next tape 
+blocks, respectively. During FakeTape processing, these two fields are handled 
+as 16 bit unsigned integers. Their range, in other words, is from 0x0000 to 
+0xFFFF (0d0 to 0d65535). However, each is encoded in the FakeTape not as a 
+binary integer but instead as ASCII printable hexadecimal in big-endian byte 
+ordering. Each field is four bytes in length as encoded in the FakeTape (padded 
+with ASCII printable hexadecimal zeroes as necessary).</P>
+<P>The third field holds a check value. This check value is an XOR of the 
+"previous" and "next" fields, computed on FakeTape read after these two fields 
+have been read and converted to integers, and computed on FakeTape write before 
+these two integers are converted to ASCII printable hexadecimal. It is itself 
+stored in the FakeTape file as ASCII printable hexadecimal in big-endian byte 
+ordering (and is four bytes in length as encoded, padded with ASCII printable 
+hexadecimal zeroes as necessary).</P>
+<P>Both uppercase and lowercase printable hexadecimal are valid. The FLEX-ES 
+FakeTape routines will read both uppercase and lowercase ASCII printable 
+hexadecimal, but will write only uppercase.</P>
+<P>Example: An IBG between 16 and 32 kilobyte blocks</P>
+<P>The length of the previous block is 0x4000 and the length of the next block 
+is 0x8000. The value of the check field is 0x4000 XOR 0x8000 = 0xC000.</P>
+<P>In binary, these integer values are:</P>
+<P><PRE><TT>
+<PRE><TT>0100 0000 0000 0000   previous
+1000 0000 0000 0000   next
+1100 0000 0000 0000   check (previous XOR next)</TT></PRE></TT></PRE>
+<P></P>
+<P>Converted to ASCII printable hexadecimal, these integers become the ASCII 
+characters</P>
+<P><PRE><TT>
+<PRE><TT>"4000
+ 8000
+ C000"</TT></PRE></TT></PRE>
+<P></P>
+<P>(shown above with newlines separating each field; these newlines would not 
+appear in the FakeTape).</P>
+<P>Without the newlines, this is the ASCII string:</P>
+<P><PRE><TT>
+<PRE><TT>"40008000C000"</TT></PRE></TT></PRE>
+<P></P>
+<P>which is:</P>
+<P><PRE><TT>
+<PRE><TT>0x34 0x30 0x30 0x30 0x38 0x30 0x30 0x30 0x43 0x30 0x30 0x30</TT></PRE></TT></PRE>
+<P></P>
+<P>or, if you prefer to think ASCII in decimal:</P>
+<P><PRE><TT>
+<PRE><TT>0d52 0d48 0d48 0d48 0d56 0d48 0d48 0d48 0d67 0d48 0d48 0d48</TT></PRE></TT></PRE>
+<P></P>
+<P>or, in binary:</P>
+<P><PRE><TT>
+<PRE><TT>0b00110100 0b00110000 0b00110000 0b00110000
+0b00111000 0b00110000 0b00110000 0b00110000
+0b01000011 0b00110000 0b00110000 0b00110000</TT></PRE></TT></PRE>
+<P></P>
+<P>(Recall that the XOR of the check field is done on the integer values of the 
+fields before their conversion to printable hexadecimal on write or after their 
+conversion from printable hexadecimal on read. It is not done on the printable 
+hexadecimal.)</P>
+<H2><A name=4.5.>4.5. - Tape Marks</H2>
+<P>A FakeTape tape mark is represented as a tape block whose length is zero. A 
+FakeTape tape mark is encoded on a FakeTape with two adjoining IBGs; the "next" 
+field of the first of these IBGs is zero, and the "previous" field of the second 
+of these IBGs is also zero.</P>
+<H2><A name=4.6.>4.6. - FakeTape Layout</H2>
+<P>All FakeTapes begin and end with a FakeTape IBG. The first IBG on any 
+FakeTape contains a "previous" field which indicates that the preceding tape 
+block is of zero length. The last IBG on any FakeTape contains a "next" field 
+which indicates that the following tape block is of zero length.</P>
+<P>An initialized but empty FakeTape thus contains two IBGs, all of whose fields 
+are ASCII "0".</P>
+<P>An initialized but empty FakeTape therefore contains a tape mark (two IBGs 
+surrounding a tape block of length zero).</P>
+<P>All writing is done to the end of the tape. To write another tape block at 
+the end of the tape, first modify the "next" field and the "check" field of the 
+last IBG on the tape to reflect the length of the new tape block, then write the 
+new tape block, and finally add a new IBG at the new end of the tape which 
+contains the length of this new tape block in its "previous" field, ASCII zero 
+characters in the "next" field, and an XOR of these two in the "check" 
+field.</P>
+<P>To write a tape mark to the end of the tape, it is not necessary to modify 
+the existing IBG at the end of the tape, since its "next" field already 
+indicates a length of zero. Simply add another IBG at the end of the tape whose 
+"previous", "next", and "check" fields are all ASCII "0" characters.</P>
+<H2><A name=4.7.>4.7. - Write Protection</H2>
+<P>Write-protection on FakeTapes is external to the FakeTape format itself. 
+Write protection is accomplished via the permissions mechanism that regulates 
+write access to the medium upon which a FakeTape is carried. In the case of 
+FakeTapes in server OS disk files, the FakeTape Library functions use the server 
+OS file permission system to provide write protection. With other media, on 
+other systems, or with other access libraries, other means of providing write 
+protection may be necessary.</P></A></BODY></HTML>
