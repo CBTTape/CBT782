@@ -1,6 +1,6 @@
-2025-04-13 22:48:07.262398 - Received CBT.V505.FILE782.PDS from FILE782.XMI 
-2025-04-13 22:48:07.263940 - Found $$$#DATE.txt (text/plain) in CBT.V505.FILE782.PDS, moved to PDS/$$$#DATE
-2025-04-13 22:48:07.264034 - Found $$INTRO.txt (text/plain) in CBT.V505.FILE782.PDS, moved to PDS/$$INTRO
-2025-04-13 22:48:07.264105 - Found @FILE782.txt (text/plain) in CBT.V505.FILE782.PDS, moved to PDS/@FILE782
-2025-04-13 22:48:07.276582 - Found AWSBR152.zip (application/zip) in CBT.V505.FILE782.PDS, moved to AWSBR152
-2025-04-13 22:48:07.285944 - Found SOURCZIP.zip (application/zip) in CBT.V505.FILE782.PDS, moved to SOURCZIP
+2025-04-15 05:34:10.137329 - Received CBT.V505.FILE782.PDS from FILE782.XMI 
+2025-04-15 05:34:10.138573 - Found $$$#DATE.txt (text/plain) in CBT.V505.FILE782.PDS, moved to PDS/$$$#DATE
+2025-04-15 05:34:10.138949 - Found $$INTRO.txt (text/plain) in CBT.V505.FILE782.PDS, moved to PDS/$$INTRO
+2025-04-15 05:34:10.139320 - Found @FILE782.txt (text/plain) in CBT.V505.FILE782.PDS, moved to PDS/@FILE782
+2025-04-15 05:34:10.149572 - Found AWSBR152.zip (application/zip) in CBT.V505.FILE782.PDS, moved to AWSBR152
+2025-04-15 05:34:10.162427 - Found SOURCZIP.zip (application/zip) in CBT.V505.FILE782.PDS, moved to SOURCZIP
